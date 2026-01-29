@@ -1,0 +1,24 @@
+Procesarea si Filtrarea unui Vector (C + ASM)
+
+1. Program C/C++:
+   - Definit variabila globala: int deplasament;
+   - In main: se citeste un vector de 10 intregi si se apeleaza asmProcesare(vector).
+   - Definit functia: int citesteFactor() -> citeste si returneaza un intreg.
+   - La final, se afiseaza vectorul prelucrat.
+
+2. Modul ASM 1 (asmProcesare):
+   - Primeste ca parametru adresa vectorului.
+   - Apeleaza functia C citesteFactor() pentru a obtine un multiplicator.
+   - Acceseaza variabila globala deplasament.
+   - Calculeaza pentru fiecare element: element = (element * factor) + deplasament.
+   - La finalul prelucrarii, apeleaza functia asmFiltru(vector).
+
+3. Modul ASM 2 (asmFiltru):
+   - Primeste adresa vectorului procesat.
+   - Parcurge vectorul si inlocuieste orice valoare negativa cu 0 (clipping).
+
+Pasi compilare:
+nasm -fwin32 modulProcesare.asm -o modulProcesare.obj
+nasm -fwin32 modulFiltru.asm -o modulFiltru.obj
+cl main.c /link modulProcesare.obj modulFiltru.obj
+main.exe

@@ -1,0 +1,10 @@
+Se citesc din fisierul numere.txt mai multe numere (pare si impare).
+
+Sa se creeze 2 siruri rezultat N si P astfel:
+N - doar numere impare si P - doar numere pare.
+
+Afisati cele 2 siruri rezultate pe ecran. 
+
+nasm modul.asm -fwin32 -g
+cl main.c /link modul.obj
+main.exe

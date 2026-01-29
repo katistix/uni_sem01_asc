@@ -1,0 +1,4 @@
+nasm modul2.asm -fwin32 -g
+nasm modul1.asm -fwin32 -g
+cl main.c /link modul1.obj modul2.obj
+main.exe

@@ -1,0 +1,12 @@
+Cerința
+Se citește de la tastatură un număr natural n, urmat de n șiruri de numere întregi. Pentru fiecare șir se
+dorește afișarea numărului care conține cele mai multe cifre impare, iar în caz de egalitate se va
+afișa cel mai mare dintre ele. Nu se cunoaște numărul de elemente din fiecare șir, de aceea se
+recomandă citirea acestora ca șiruri de caractere, urmat apoi de extragerea fiecărui număr. Dacă
+șirul nu conține niciun număr cu cifre impare, se va afișa mesajul nu există.
+Indicații
+Fișierul main va fi scris în limbajul C. El poate conține doar funcțiile de citire, respectiv de afișare, și
+va efectua apeluri către subprogramele care vor rezolva problema, acestea din urmă fiind scrise în
+limbajul de asamblare studiat la laborator.
+Primul subprogram va prelucra câte un șir și va returna numărul căutat din șirul curent. Cel de al
+doilea subprogram va primi că parametru un număr și va returna numărul de cifre impare.

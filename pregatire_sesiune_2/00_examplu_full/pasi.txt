@@ -1,0 +1,20 @@
+Enunt:
+Se cere un program C/C++ care apeleaza functia asmConcat scrisa in limbaj de asamblare.
+
+Aceasta functie primeste ca si parametru un sir de caractere citit in programul C/C++, 
+citeste un sir de caractere apelând pentru aceasta functia C/C++ citesteSir
+si mai acceseaza un sir de caractere care este o variabila globala a programului C/C++ (numita sirC).
+
+Functia asmConcat construieste si intoarce ca rezultat sirul obtinut
+prin concatenarea primelor 10 caractere ale celor 3 siruri.
+
+Functia asmUpper va transforma literele mici in litere mari.
+
+Sirul final obtinut va fi afisat pe ecran. Obs.: Sirurile citite de la tastatura nu contin spatii.
+
+Pasi:
+
+nasm modulUpper.asm -fwin32 -g -o modulUpper.obj
+nasm modulConcatenare.asm -fwin32 -g -o modulConcatenare.obj
+cl mainConcatenare.c /link modulConcatenare.obj modulUpper.obj
+mainConcatenare.exe

@@ -1,0 +1,19 @@
+{
+    "editor.mouseWheelZoom": true,
+    "nasm.checkOnType": true,
+    "workbench.colorTheme": "Moonfly",
+    "terminal.integrated.profiles.windows": {
+        "vcvars32": {
+            "path": "cmd.exe",
+            "args": [
+                "/k", 
+                "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Auxiliary\\Build\\vcvars32.bat"
+            ],
+            "icon": "terminal-cmd",
+            "name": "Developer CMD (x86)"
+        }
+    },
+    "terminal.integrated.defaultProfile.windows": "vcvars32",
+    "terminal.external.windowsExec": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Auxiliary\\Build\\vcvars32.bat",
+    "github.copilot.nextEditSuggestions.enabled": true
+}

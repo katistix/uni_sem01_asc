@@ -1,0 +1,28 @@
+Analiza Bitwise si Sumare (C + ASM)
+
+1. Program C/C++:
+   - Definit variabila globala: int masca; (ex: se citeste de la tastatura)
+   - In main: se citeste un vector de 8 intregi.
+   - Definit functia: void logValid(int val) -> afiseaza mesajul "Element valid gasit: <val>".
+   - Apeleaza functia: int asmAnaliza(int* vector, int lungime).
+   - Rezultatul intors de asmAnaliza va fi afisat (1 - Suma e multiplu de 5, 0 - altfel).
+
+2. Modul ASM 1 (asmAnaliza):
+   - Primeste: adresa vectorului si lungimea acestuia (8).
+   - Parcurge vectorul si pentru fiecare element verifica: (element & masca) != 0.
+   - Daca conditia este adevarata:
+        a) Apeleaza functia C logValid(element).
+        b) Aduna elementul la o suma partiala (initial 0).
+   - La finalul parcurgerii, apeleaza functia asmCheckSum(suma).
+   - Returneaza in EAX rezultatul primit de la asmCheckSum.
+
+3. Modul ASM 2 (asmCheckSum):
+   - Primeste ca parametru suma calculata anterior.
+   - Verifica daca suma este divizibila cu 5.
+   - Returneaza 1 daca e divizibila, 0 in caz contrar.
+
+Pasi compilare:
+nasm -fwin32 modulAnaliza.asm -o modulAnaliza.obj
+nasm -fwin32 modulCheck.asm -o modulCheck.obj
+cl main.c /link modulAnaliza.obj modulCheck.obj
+main.exe

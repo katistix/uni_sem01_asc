@@ -1,0 +1,58 @@
+================================================================================
+PROBLEMĂ: PROCESARE ȘI SUMĂ CIFRE (MULTIMODUL C/ASM)
+================================================================================
+
+ENUNȚ:
+Să se scrie un program multimodul format din C/C++ și limbaj de asamblare (x86 NASM) 
+care realizează următoarele operații:
+
+1. Programul C/C++:
+   - Definește o variabilă globală `prefix` (șir de caractere, ex: "COD-").
+   - Citește de la tastatură un șir de caractere `sirUtilizator`.
+   - Definește o funcție `void logStep(char* mesaj)` care afișează pe ecran un 
+     mesaj de monitorizare (va fi apelată din Assembly).
+   - Apelează funcția externă `asmProcessData`.
+
+2. Funcția `asmProcessData` (Modulul Assembly 1):
+   - Primește ca parametru `sirUtilizator`.
+   - Apelează funcția C/C++ `citesteSufix` pentru a citi un al doilea șir.
+   - Construiește un șir final prin concatenarea:
+     [variabila globală prefix] + [primele 5 caractere din sirUtilizator] + [sufix].
+   - Înainte de finalizare, apelează funcția `asmSumDigits` pentru a procesa șirul.
+   - Apelează funcția C/C++ `logStep` pentru a anunța finalizarea concatenării.
+
+3. Funcția `asmSumDigits` (Modulul Assembly 2):
+   - Primește șirul final construit anterior.
+   - Parcurge șirul și calculează suma tuturor cifrelor (caractere '0'-'9') găsite.
+   - Returnează suma sub formă de întreg.
+
+4. Rezultatul final:
+   - Programul principal C/C++ va afișa șirul concatenat și suma cifrelor returnată.
+
+--------------------------------------------------------------------------------
+FIȘIERE NECESARE:
+--------------------------------------------------------------------------------
+
+1. mainData.c          - Programul principal C.
+2. modulProcess.asm    - Gestionarea concatenării și apelul funcțiilor C.
+3. modulMath.asm       - Calculul sumei cifrelor din șir.
+
+--------------------------------------------------------------------------------
+INSTRUCȚIUNI DE COMPILARE (PENTRU EXEMPLUL TĂU):
+--------------------------------------------------------------------------------
+
+nasm modulProcess.asm -fwin32 -g -o modulProcess.obj
+nasm modulMath.asm -fwin32 -g -o modulMath.obj
+cl mainData.c /link modulProcess.obj modulMath.obj
+mainData.exe
+
+--------------------------------------------------------------------------------
+DETALII IMPLEMENTARE (LOGICĂ):
+--------------------------------------------------------------------------------
+
+- Atenție la convenția de apel (cdecl).
+- Variabilele globale din C trebuie declarate cu "extern" în ASM.
+- Funcțiile din ASM trebuie declarate cu "global" pentru a fi vizibile în C.
+- Folosiți registrele EAX pentru returnarea valorilor întregi.
+
+================================================================================
